@@ -9,7 +9,7 @@ const VolumeControls = () => {
         min="1"
         max="100"
         defaultValue="50"
-        className="w-full"
+        className="w-full accent-accent-light dark:accent-accent-dark"
       />
     </div>
   );

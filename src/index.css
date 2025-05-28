@@ -2,17 +2,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-dark: #000;
-  --color-primary-light: #FFF;
-  --color-secondary: #64748B;
-  --color-accent: #94A3B8;
-  --color-detail: rgba(213, 215, 216, 0.55);
-  --color-selected: #F1F5F9;
+  --color-primary-light: #FBFAF5;
+  --color-secondary-light: #151313;
+  --color-tertiary-light: #635E65;
+  --color-accent-light: #90a959;
+  --color-detail-light: hsl(from var(--color-secondary-light) h s l / 25%);
+  --color-selected-light: hsl(from var(--color-accent-light) h s l / 20%);
+
+  --color-primary-dark: #3A3130;
+  --color-secondary-dark: #FFF;
+  --color-tertiary-dark: #D0CEC0;
+  --color-accent-dark: #90a959;
+  --color-detail-dark: hsl(from var(--color-secondary-dark) h s l / 25%);
+  --color-selected-dark: hsl(from var(--color-accent-dark) h s l / 25%);
+
   --font-default: "Inter", sans-serif;
 }
 
 @layer base {
   html {
-    @apply bg-primary-light text-primary-dark font-normal font-default;
+    @apply bg-primary-light dark:bg-primary-dark text-secondary-light dark:text-secondary-dark font-normal font-default;
+  }
+}
+
+@layer components {
+  .playControlsButton {
+    @apply flex justify-center items-center cursor-pointer rounded hover:text-accent-light dark:hover:text-accent-dark
   }
 }

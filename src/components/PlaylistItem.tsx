@@ -7,7 +7,7 @@ type PlaylistItemProps = {
 
 const PlaylistItem = ({songTitle, artistName, songLength, isSelected}: PlaylistItemProps) => {
   const songLengthFormatted: string = getSongLengthFormatted(songLength);
-  const bgClass: string = isSelected ? 'bg-selected' : 'bg-none';
+  const bgClass: string = isSelected ? 'bg-selected-light dark:bg-selected-dark' : 'bg-none';
 
   return (
     <div className={`${bgClass} flex items-center justify-between`}>
@@ -15,11 +15,11 @@ const PlaylistItem = ({songTitle, artistName, songLength, isSelected}: PlaylistI
         <div className="text-base font-medium">
           {songTitle}
         </div>
-        <div className="text-sm font-medium text-secondary">
+        <div className="text-sm font-medium text-tertiary-light dark:text-tertiary-dark">
           {artistName}
         </div>
       </div>
-      <div>
+      <div className="text-sm font-medium text-tertiary-light dark:text-tertiary-dark">
         {songLengthFormatted}
       </div>
     </div>
