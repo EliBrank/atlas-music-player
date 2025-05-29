@@ -11,6 +11,19 @@ type AudioPlayerProps = {
 const AudioPlayer = ({ playing, volume, speed, song, onEnd }: AudioPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // handle song URL change
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !song) return;
+
+    audio.src = song;
+    audio.load();
+
+    if (playing) {
+      audio.play().catch(e => console.warn('Playback failed: ', e));
+    }
+  }, [song]);
+
   // handle play/pause
   useEffect(() => {
     if (playing) {

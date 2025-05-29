@@ -2,15 +2,19 @@ type PlaylistItemProps = {
   songTitle: string,
   artistName: string,
   songLength: number,
-  isSelected: boolean
+  isSelected: boolean,
+  onClick: () => void
 }
 
-const PlaylistItem = ({songTitle, artistName, songLength, isSelected}: PlaylistItemProps) => {
+const PlaylistItem = ({songTitle, artistName, songLength, isSelected, onClick}: PlaylistItemProps) => {
   const songLengthFormatted: string = getSongLengthFormatted(songLength);
   const bgClass: string = isSelected ? 'bg-selected-light dark:bg-selected-dark' : 'bg-none';
 
   return (
-    <div className={`${bgClass} flex items-center justify-between`}>
+    <div
+      className={`${bgClass} flex cursor-pointer items-center justify-between`}
+      onClick={onClick}
+    >
       <div>
         <div className="text-base font-medium">
           {songTitle}
