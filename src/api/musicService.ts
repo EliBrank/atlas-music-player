@@ -11,9 +11,9 @@ export type SongDetails = PlaylistSong & {
   song: string,
 };
 
-export type Lyrics = {
-  lyrics: string
-};
+// export type Lyrics = {
+//   lyrics: string
+// };
 
 export const fetchPlaylist = async (): Promise<PlaylistSong[]> => {
   const response = await fetch('/api/v1/playlist');
@@ -25,11 +25,5 @@ export const fetchPlaylist = async (): Promise<PlaylistSong[]> => {
 export const fetchSongDetails = async (songId: string): Promise<SongDetails> => {
   const response = await fetch(`/api/v1/songs/${songId}`);
   if (!response.ok) throw new Error('Failed to fetch song details');
-  return await response.json();
-}
-
-export const fetchLyrics = async (songId: string): Promise<Lyrics> => {
-  const response = await fetch(`/api/v1/songs/${songId}`);
-  if (!response.ok) throw new Error('Failed to fetch lyrics');
   return await response.json();
 }

@@ -1,15 +1,22 @@
 import { Volume2 } from 'lucide-react';
 
-const VolumeControls = () => {
+type VolumeControlsProps = {
+  volume: number;
+  onVolumeChange: (volume: number) => void;
+}
+
+const VolumeControls = ({ volume, onVolumeChange }: VolumeControlsProps) => {
   return (
     <div className="flex gap-2">
       <Volume2 />
       <input
         type="range"
-        min="1"
+        min="0"
         max="100"
-        defaultValue="50"
+        value={volume}
         className="w-full accent-accent-light dark:accent-accent-dark"
+        // set volume value to reflect slider position
+        onChange={(e) => onVolumeChange(Number(e.target.value))}
       />
     </div>
   );

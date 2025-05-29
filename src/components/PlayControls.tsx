@@ -1,13 +1,64 @@
-import { Rewind, Play, FastForward, Shuffle } from 'lucide-react';
+import { Rewind, Play, Pause, FastForward, Shuffle } from 'lucide-react';
 
-const PlayControls = () => {
+type PlayControlsProps = {
+  isPlaying: boolean;
+  playbackSpeed: 0.5 | 1 | 2;
+  isShuffling: boolean;
+  hasPrevious: boolean;
+  hasNext: boolean;
+  onPlayPause: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
+  onSpeedChange: () => void;
+  onShuffleToggle: () => void;
+}
+
+const PlayControls = ({
+  isPlaying,
+  playbackSpeed,
+  isShuffling,
+  hasPrevious,
+  hasNext,
+  onPlayPause,
+  onPrevious,
+  onNext,
+  onSpeedChange,
+  onShuffleToggle
+}: PlayControlsProps) => {
   return (
     <div className="mb-4 flex items-center justify-between px-2">
-      <button className="playControlsButton">1x</button>
-      <button className="playControlsButton"><Rewind /></button>
-      <button className="playControlsButton min-h-12 min-w-12 outline-2 outline-primary-light"><Play /></button>
-      <button className="playControlsButton"><FastForward /></button>
-      <button className="playControlsButton"><Shuffle /></button>
+      <button
+        className="playControlsButton"
+        onClick={onSpeedChange}
+      >
+        {playbackSpeed}x
+      </button>
+      <button
+        className={`playControlsButton ${!hasPrevious ? 'opacity-50 cursor-not-allowed' : ''}`}
+        onClick={onPrevious}
+        disabled={!hasPrevious}
+      >
+        <Rewind />
+      </button>
+      <button
+        className="playControlsButton min-h-12 min-w-12 outline-2 outline-primary-light"
+        onClick={onPlayPause}
+      >
+        {isPlaying ? <Pause/> : <Play/>}
+      </button>
+      <button
+        className={`playControlsButton ${!hasNext ? 'opacity-50 cursor-not-allowed' : ''}`}
+        onClick={onNext}
+        disabled={!hasNext}
+      >
+        <FastForward />
+      </button>
+      <button
+        className={`playControlsButton ${isShuffling ? 'text-accent-light dark:text-accent-dark' : ''}`}
+        onClick={onShuffleToggle}
+      >
+        <Shuffle />
+      </button>
     </div>
   );
 }
