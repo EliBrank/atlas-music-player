@@ -30,6 +30,7 @@ const PlayControls = ({
       <button
         className="playControlsButton"
         onClick={onSpeedChange}
+        aria-label="Change Speed"
       >
         {playbackSpeed}x
       </button>
@@ -37,12 +38,14 @@ const PlayControls = ({
         className={`playControlsButton ${!hasPrevious ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={onPrevious}
         disabled={!hasPrevious}
+        aria-label="Previous"
       >
         <Rewind />
       </button>
       <button
         className="playControlsButton min-h-12 min-w-12 outline-2 outline-primary-light"
         onClick={onPlayPause}
+        aria-label={isPlaying ? 'Pause' : 'Play'}
       >
         {isPlaying ? <Pause/> : <Play/>}
       </button>
@@ -50,12 +53,14 @@ const PlayControls = ({
         className={`playControlsButton ${!hasNext ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={onNext}
         disabled={!hasNext}
+        aria-label="Next"
       >
         <FastForward />
       </button>
       <button
         className={`playControlsButton ${isShuffling ? 'text-accent-light dark:text-accent-dark' : ''}`}
         onClick={onShuffleToggle}
+        aria-label="Shuffle"
       >
         <Shuffle />
       </button>

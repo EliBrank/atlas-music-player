@@ -54,7 +54,6 @@ const mockSongDetails: Record<string, SongDetails> = {
 
 export const handlers = [
   http.get('*/api/v1/playlist', () => {
-    console.log('MSW: Intercepting playlist request');
     return HttpResponse.json(mockPlaylist);
   }),
 

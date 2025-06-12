@@ -4,6 +4,7 @@ exports[`SongTitle renders correctly 1`] = `
 <div>
   <div>
     <h2
+      aria-label="Now Playing"
       class="mb-2 text-2xl font-bold"
     >
       Testing Once Again
