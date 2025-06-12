@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PlaylistItem renders correctly 1`] = `
+<div>
+  <div
+    class="bg-selected-light dark:bg-selected-dark flex cursor-pointer items-center justify-between"
+  >
+    <div>
+      <div
+        class="text-base font-medium"
+      >
+        Testing Time
+      </div>
+      <div
+        class="text-sm font-medium text-tertiary-light dark:text-tertiary-dark"
+      >
+        The Testers
+      </div>
+    </div>
+    <div
+      class="text-sm font-medium text-tertiary-light dark:text-tertiary-dark"
+    >
+      3:40
+    </div>
+  </div>
+</div>
+`;
