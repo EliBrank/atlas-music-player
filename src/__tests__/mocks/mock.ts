@@ -31,7 +31,6 @@ const mockPlaylist: PlaylistSong[] = [
   },
 ];
 
-// Record is TS utility type for ensuring type of key/value
 const mockSongDetails: Record<string, SongDetails> = {
   "abc001": {
     id: "abc001",
@@ -54,13 +53,12 @@ const mockSongDetails: Record<string, SongDetails> = {
 }
 
 export const handlers = [
-  // mock playlist endpoint
-  http.get('api/vi/playlist', () => {
+  http.get('*/api/v1/playlist', () => {
+    console.log('MSW: Intercepting playlist request');
     return HttpResponse.json(mockPlaylist);
   }),
 
-  // mock song details endpoint
-  http.get('api/v1/songs/:songId', ({ params }) => {
+  http.get('*/api/v1/songs/:songId', ({ params }) => {
     const { songId } = params;
     const song = mockSongDetails[songId as string];
 
@@ -70,6 +68,6 @@ export const handlers = [
 
     return HttpResponse.json(song);
   }),
-]
+];
 
 export const server = setupServer(...handlers);

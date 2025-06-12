@@ -11,7 +11,8 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
-    setupFiles: "vitest.setup.ts",
+    setupFiles: "./vitest.setup.ts",
+    pool: 'forks',
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
